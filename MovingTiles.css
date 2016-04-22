@@ -1,0 +1,32 @@
+.moving-tiles {
+	perspective: 1000;
+}
+.moving-tiles .tile {
+    padding: 5px;
+    height: 195px;
+	transform-style: preserve-3d;
+	transition: transform 0.6s ease;
+    transform-origin: 100% 97.5px;
+}
+.moving-tiles .tile .frontside, .moving-tiles .tile .backside {
+    background-color: blue;
+    color: #fff;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    right: 5px;
+	backface-visibility: hidden;
+}
+.moving-tiles .tile .frontside {
+    transform: rotateX(0deg);
+    z-index: 10;
+}
+.moving-tiles .tile .backside {
+    transform: rotateX(-180deg);
+    z-index: 9;
+}
+.moving-tiles .tile:hover {
+    transform: rotateX(180deg);
+    
+}
