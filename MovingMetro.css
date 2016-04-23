@@ -1,5 +1,5 @@
 .moving-tiles {
-	perspective: 1000;
+	perspective: 1000px;
 }
 .moving-tiles .tile {
     padding: 5px;
@@ -8,7 +8,9 @@
 .moving-tiles .tile-slide {
     position: relative;
     height: 100%;
-    overflow: hidden;
+}
+.moving-tiles .tile-slide.M2-Animating {
+    overflow: hidden!important;
 }
 .moving-tiles .tile-wrapper {
 	transform-style: preserve-3d;
@@ -21,19 +23,16 @@
     position: absolute;
 }
 .moving-tiles .tile-wrapper:not(:only-child):not(.active) {
-    top: -205px;
+    z-index: -100!important;
 }
 .moving-tiles .tile-wrapper img {
     max-width: 100%;
     max-height: 100%;
 }
 .moving-tiles .tile .frontside, .moving-tiles .tile .backside {
-    color: #fff;
     position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
+    width: 100%;
+    height: 100%;
 	backface-visibility: hidden;
     padding: 15px;
 }
@@ -45,17 +44,8 @@
     transform: rotateX(-180deg);
     z-index: 9;
 }
-.moving-tiles .tile:hover .tile-wrapper {
+.moving-tiles .tile:hover > .tile-wrapper, .moving-tiles .tile:hover .tile-slide:not(.M2-Animating) .tile-wrapper {
     transform: rotateX(180deg);
     
 }
 
-.moving-tiles .red .frontside, .moving-tiles .red .backside {
-    background-color: red;
-}
-.moving-tiles .green .frontside, .moving-tiles .green .backside {
-    background-color: green;
-}
-.moving-tiles .blue .frontside, .moving-tiles .blue .backside {
-    background-color: blue;
-}

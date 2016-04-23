@@ -8,6 +8,30 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
         <script type="text/javascript" src="bootstraps/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="MovingMetro.js"></script>
+        
+        <style>
+            .moving-tiles .tile .frontside, .moving-tiles .tile .backside {
+                color: #fff;
+            }
+            .moving-tiles .red .frontside, .moving-tiles .red .backside {
+                background-color: red;
+            }
+            .moving-tiles .green .frontside, .moving-tiles .green .backside {
+                background-color: green;
+            }
+            .moving-tiles .blue .frontside, .moving-tiles .blue .backside {
+                background-color: blue;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.moving-tiles .tile').each(function() {
+                    if ($(this).children('.tile-slide').length > 0) {
+                        $(this).data('MovingTiles', new TileSlide({ Target: this }));
+                    }
+                })
+            });
+        </script>
     </head>
     <body>
         <div class="moving-tiles container">
