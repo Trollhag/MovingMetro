@@ -23,7 +23,7 @@
     position: absolute;
 }
 .moving-tiles .tile-wrapper:not(:only-child):not(.active) {
-    z-index: -100!important;
+    z-index: -100;
 }
 .moving-tiles .tile-wrapper img {
     max-width: 100%;

@@ -52,13 +52,13 @@ TileSlide.prototype = {
         else if (active.next().length > 0)  next = active.next();
         else                                next = this.slides.filter(':first-child');
         
-        this.Animate(active, next, this.direction);
+        var direction = this.direction;
+        if (next.attr('data-direction')) direction = next.attr('data-direction');
+        
+        this.Animate(active, next, direction);
     },
     Prev: function() {
-        var direction = "left"
-        if      (this.direction == "down")  direction = "up";
-        else if (this.direction == "up")    direction = "down";
-        else if (this.direction == "left")  direction = "right";
+        var that = this;
         
         var active;
         if (this.slides.filter('.active').length > 0)               active = this.slides.filter('.active');
@@ -72,7 +72,20 @@ TileSlide.prototype = {
         else if (active.prev().length > 0)  prev = active.next();
         else                                prev = this.slides.filter(':last-child');
         
+        var direction = ReverseDirection(prev.attr('data-direction'));
+        if (!direction) ReverseDirection(this.direction);
+        
         this.Animate(active, prev, direction);
+        
+        function ReverseDirection(dir) {
+            switch(dir) {
+                case "down" : return "up";
+                case "up"   : return "down";
+                case "left" : return "right";
+                case "right": return "left";
+                default     : return false;
+            }
+        }
     },
     Animate: function(active, next, direction) {
         var that = this;
@@ -81,9 +94,9 @@ TileSlide.prototype = {
         this.block = true;
         var block = 0;
         
-        this.Load(next, next.attr('data-direction') || direction);
+        this.Load(next, direction);
         this.slides.first().closest('.tile-slide').addClass('M2-Animating');
-        active.animate(this.animation[next.attr('data-direction') || direction], {
+        active.animate(this.animation[direction], {
             duration:   this.speed, 
             queue:      false,
             complete:   function() {
@@ -91,7 +104,7 @@ TileSlide.prototype = {
                 checkDone();
             }
         });
-        next.animate(this.animation[next.attr('data-direction') || direction], {
+        next.animate(this.animation[direction], {
             duration:   this.speed,
             queue:      false,
             complete:   function() {
@@ -126,22 +139,22 @@ TileSlide.prototype = {
             "right": {
                 "left": this.slides.first().width() + "px",
                 "top": "0",
-                "z-index": 10
+                "z-index": 100
             },
             "left": {
                 "left": "-" + this.slides.first().width() + "px",
                 "top": "0",
-                "z-index": 10
+                "z-index": 100
             },
             "up": {
                 "top": "-" + this.slides.first().height() + "px",
                 "left": "0",
-                "z-index": 10
+                "z-index": 100
             },
             "down": {
                 "top": this.slides.first().height() + "px",
                 "left": "0",
-                "z-index": 10
+                "z-index": 100
             }
         }
         elm.css(complete[direction]);
