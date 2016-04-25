@@ -1,28 +1,11 @@
 function TileSlide(args) {
     if (!args) args = {};
+    $(args.Target).data('M2', this);
     this.wait = parseInt(args.Wait) || 3000;
     this.speed = parseInt(args.Speed) || 800;
     this.direction = (args.Direction || "right").toLowerCase();
     this.pause = false;
     this.slides = $(args.Target).find('.tile-wrapper');
-    this.animation = {
-        "right": {
-            "left": "-=" + this.slides.first().width() + "px",
-            "top": "0"
-        },
-        "left": {
-            "left": "+=" + this.slides.first().width() + "px",
-            "top": "0"
-        },
-        "up": {
-            "top": "+=" + this.slides.first().height() + "px",
-            "left": "0"
-        },
-        "down": {
-            "top": "-=" + this.slides.first().height() + "px",
-            "left": "0"
-        }
-    };
     this.block = false;
     var that = this;
     $(args.Target).mouseenter(function() {
@@ -94,6 +77,26 @@ TileSlide.prototype = {
         this.block = true;
         var block = 0;
         
+        
+        this.animation = {
+            "right": {
+                "left": "-=" + this.slides.first().width() + "px",
+                "top": "0"
+            },
+            "left": {
+                "left": "+=" + this.slides.first().width() + "px",
+                "top": "0"
+            },
+            "up": {
+                "top": "+=" + this.slides.first().height() + "px",
+                "left": "0"
+            },
+            "down": {
+                "top": "-=" + this.slides.first().height() + "px",
+                "left": "0"
+            }
+        };
+        
         this.Load(next, direction);
         this.slides.first().closest('.tile-slide').addClass('M2-Animating');
         active.animate(this.animation[direction], {
@@ -158,7 +161,6 @@ TileSlide.prototype = {
             }
         }
         elm.css(complete[direction]);
-        
     },
     Pause: function() {
         this.pause = true;
