@@ -12,13 +12,6 @@
 .moving-tiles .tile-slide.M2-Animating {
     overflow: hidden!important;
 }
-.moving-tiles .tile-wrapper {
-	transform-style: preserve-3d;
-	transition: transform 0.8s ease;
-    transform-origin: 100% 97.5px;
-    height: 100%;
-    width: 100%;
-}
 .moving-tiles .tile-wrapper:not(:only-child){
     position: absolute;
 }
@@ -29,23 +22,48 @@
     max-width: 100%;
     max-height: 100%;
 }
-.moving-tiles .tile .frontside, .moving-tiles .tile .backside {
+.moving-tiles .flipper {
+	transform-style: preserve-3d;
+	transition: transform 0.8s ease;
+    height: 100%;
+    width: 100%;
+}
+.moving-tiles .flipper-vertical .flipper:only-child, .moving-tiles .flipper-horizontal .flipper:only-child {
+    position: relative;
+}
+.moving-tiles .flipper-vertical .flipper {
+    transform-origin: 100% 97.5px;
+}
+.moving-tiles .flipper-horizontal .flipper {
+    transform-origin: 50% 100%;
+}
+.moving-tiles .flipper .frontside, .moving-tiles .flipper .backside {
     position: absolute;
     width: 100%;
     height: 100%;
 	backface-visibility: hidden;
     padding: 15px;
 }
-.moving-tiles .tile .frontside {
+.moving-tiles .flipper-vertical .flipper .frontside {
     transform: rotateX(0deg);
     z-index: 10;
 }
-.moving-tiles .tile .backside {
+.moving-tiles .flipper-vertical .flipper .backside {
     transform: rotateX(-180deg);
     z-index: 9;
 }
-.moving-tiles .tile:hover > .tile-wrapper, .moving-tiles .tile:hover .tile-slide:not(.M2-Animating) .tile-wrapper {
+.moving-tiles .flipper-horizontal .flipper .frontside {
+    transform: rotateY(0deg);
+    z-index: 10;
+}
+.moving-tiles .flipper-horizontal .flipper .backside {
+    transform: rotateY(180deg);
+    z-index: 9;
+}
+.moving-tiles .flipper-vertical.hover-flipp:hover > .flipper, .moving-tiles .flipper-vertical.hover-flipp:hover .tile-slide:not(.M2-Animating) .flipper, .moving-tiles .flipper-vertical.click-flipp.flipped .flipper {
     transform: rotateX(180deg);
-    
+}
+.moving-tiles .flipper-horizontal.hover-flipp:hover > .flipper, .moving-tiles .flipper-horizontal.hover-flipp:hover .tile-slide:not(.M2-Animating) .flipper, .moving-tiles .flipper-horizontal.click-flipp.flipped .flipper {
+    transform: rotateY(-180deg);
 }
 

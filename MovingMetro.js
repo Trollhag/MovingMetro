@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    $('.click-flipp').click(function() {
+        $(this).toggleClass('flipped');
+    })
+})
+
 function TileSlide(args) {
     if (!args) args = {};
     $(args.Target).data('M2', this);
@@ -29,8 +35,8 @@ TileSlide.prototype = {
         else                                                        active = this.slides.filter(':first-child');
         
         var next;
-        if (this.slides.filter('[data-slide="' + parseInt(active.attr('[data-slide="')) + 1 + '"]').length > 0) {
-            next = this.slides.filter('[data-slide="' + parseInt(active.attr('[data-slide="')) + 1 + '"]');
+        if (this.slides.filter('[data-slide="' + parseInt(active.attr('data-slide')) + 1 + '"]').length > 0) {
+            next = this.slides.filter('[data-slide="' + parseInt(active.attr('data-slide')) + 1 + '"]');
         }
         else if (active.next().length > 0)  next = active.next();
         else                                next = this.slides.filter(':first-child');
@@ -49,8 +55,8 @@ TileSlide.prototype = {
         else                                                        active = this.slides.filter(':first-child');
         
         var prev;
-        if (this.slides.filter('[data-slide="' + parseInt(active.attr('[data-slide="')) - 1 + '"]').length > 0) {
-            prev = this.slides.filter('[data-slide="' + parseInt(active.attr('[data-slide="')) - 1 + '"]');
+        if (this.slides.filter('[data-slide="' + parseInt(active.attr('data-slide')) - 1 + '"]').length > 0) {
+            prev = this.slides.filter('[data-slide="' + parseInt(active.attr('data-slide')) - 1 + '"]');
         }
         else if (active.prev().length > 0)  prev = active.next();
         else                                prev = this.slides.filter(':last-child');
@@ -69,6 +75,29 @@ TileSlide.prototype = {
                 default     : return false;
             }
         }
+    },
+    SlideTo: function(slideTo) {
+        var active;
+        if (this.slides.filter('.active').length > 0)               active = this.slides.filter('.active');
+        else if (this.slides.filter('[data-slide="1"]').length > 0) active = this.slides.filter('[data-slide="1"]');
+        else                                                        active = this.slides.filter(':first-child');
+        
+        var next;
+        if (slideTo instanceof String) {
+            next = this.slides.filter(slideTo);
+        }
+        else if (slideTo instanceof Integer && this.slides.filter('[data-slide="' + slideTo + '"]').length > 0) {
+            next = this.slides.filter('[data-slide="' + slideTo + '"]');
+        }
+        else if (this.slides.filter(':nth-child(' + slideTo + ')').length > 0) {
+            next = this.slides.filter(':nth-child(' + slideTo + ')');
+        }
+        if (!next || next.hasClass('active')) return false;
+        
+        var direction = this.direction;
+        if (next.attr('data-direction')) direction = next.attr('data-direction');
+        
+        this.Animate(active, next, direction);
     },
     Animate: function(active, next, direction) {
         var that = this;
@@ -138,7 +167,7 @@ TileSlide.prototype = {
         }
     },
     Load: function(elm, direction) {
-        var complete = {
+        var loadCSS = {
             "right": {
                 "left": this.slides.first().width() + "px",
                 "top": "0",
@@ -160,7 +189,7 @@ TileSlide.prototype = {
                 "z-index": 100
             }
         }
-        elm.css(complete[direction]);
+        elm.css(loadCSS[direction]);
     },
     Pause: function() {
         this.pause = true;
