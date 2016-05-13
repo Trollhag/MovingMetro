@@ -6,8 +6,19 @@
     height: 205px;
 }
 .moving-tiles .tile-slide {
-    position: relative;
     height: 100%;
+}
+.moving-tiles .tile-slide, .flipper-horizontal, .flipper-vertical {
+    position: relative;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+	-webkit-transition: transform 0.8s ease;
+	transition: transform 0.8s ease;
+	-moz-transition: transform 0.8s ease;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+    -moz-perspective: 10000px;
 }
 .moving-tiles .tile-slide.M2-Animating {
     overflow: hidden!important;
