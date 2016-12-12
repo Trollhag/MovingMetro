@@ -1,5 +1,84 @@
----
-layout: default
-title: Trollhag - MovingMetro
----
-<h1>Movingmetro</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="bootstraps/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="bootstraps/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="MovingMetro.css"/>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="bootstraps/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="MovingMetro.js"></script>
+        
+        <style>
+            .moving-tiles .tile .frontside, .moving-tiles .tile .backside {
+                color: #fff;
+            }
+            .moving-tiles .red .frontside, .moving-tiles .red .backside {
+                background-color: red;
+            }
+            .moving-tiles .green .frontside, .moving-tiles .green .backside {
+                background-color: green;
+            }
+            .moving-tiles .blue .frontside, .moving-tiles .blue .backside {
+                background-color: blue;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.moving-tiles .tile').each(function() {
+                    if ($(this).children('.tile-slide').length > 0) {
+                        $(this).data('MovingTiles', new TileSlide({ Target: this }));
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <div class="moving-tiles container">
+            <div class="col-sm-4 tile">
+                <div class="tile-slide">
+                    <div class="tile-wrapper blue text-center" data-direction="up">
+                        <div class="frontside">
+                            <img src="https://www.smartresenar.se/content/images/SmartResenar/SmartResenar-logo-white.png"/>
+                        </div>
+                        <div class="backside">
+                            <img src="https://www.smartresenar.se/content/images/SmartResenar/SmartResenar-logo-white.png"/>
+                        </div>
+                    </div>
+                    <div class="tile-wrapper">
+                        <div class="frontside" style="background-image: url('https://lh6.googleusercontent.com/-Vm1HFUKeA_U/AAAAAAAAAAI/AAAAAAAAAEA/OP6V0S8eRzc/s0-c-k-no-ns/photo.jpg'); background-size: cover; background-position: center;"></div>
+                        <div class="backside" style="background-image: url('https://lh6.googleusercontent.com/-Vm1HFUKeA_U/AAAAAAAAAAI/AAAAAAAAAEA/OP6V0S8eRzc/s0-c-k-no-ns/photo.jpg'); background-size: cover; background-position: center;"></div>
+                    </div>
+                    <div class="tile-wrapper green text-center" data-direction="left">
+                        <div class="frontside">
+                            <img src="http://www.wayoutwest.se/wp-content/themes/wayoutwest/img/gfx_header_logo.png" />
+                        </div>
+                        <div class="backside">
+                            <img src="http://www.wayoutwest.se/wp-content/themes/wayoutwest/img/gfx_header_logo.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 tile">
+                <div class="tile-wrapper blue">
+                    <div class="frontside">
+                        Front
+                    </div>
+                    <div class="backside">
+                        Back
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 tile">
+                <div class="tile-wrapper blue">
+                    <div class="frontside">
+                        Front
+                    </div>
+                    <div class="backside">
+                        Back
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
