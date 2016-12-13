@@ -8,16 +8,16 @@
         <script type="text/javascript" src="MovingMetro.js"></script>
         
         <style>
-            .moving-tiles .tile .frontside, .moving-tiles .tile .backside {
+            .white {
                 color: #fff;
             }
-            .moving-tiles .red .frontside, .moving-tiles .red .backside {
+            .red {
                 background-color: red;
             }
-            .moving-tiles .green .frontside, .moving-tiles .green .backside {
+            .green {
                 background-color: green;
             }
-            .moving-tiles .blue .frontside, .moving-tiles .blue .backside {
+            .blue {
                 background-color: blue;
             }
         </style>
@@ -32,27 +32,31 @@
         </script>
     </head>
     <body>
-        <div class="moving-tiles container">
+        <div class="moving-tiles container test3">
             <div class="col-sm-4 tile">
-                <div class="tile-slide">
-                    <div class="tile-wrapper blue text-center" data-direction="up">
-                        <div class="frontside">
-                            <img src="https://www.smartresenar.se/content/images/SmartResenar/SmartResenar-logo-white.png"/>
+                <div class="tile-slide flipper-vertical hover-flipp">
+                    <div class="tile-wrapper flipper text-center" data-direction="up">
+                        <div class="frontside blue">
+                            <span class="brand">MovingMetro</span>
                         </div>
-                        <div class="backside">
-                            <img src="https://www.smartresenar.se/content/images/SmartResenar/SmartResenar-logo-white.png"/>
+                        <div class="backside green">
+                            <span class="brand">MovingMetro</span>
                         </div>
                     </div>
-                    <div class="tile-wrapper">
-                        <div class="frontside" style="background-image: url('https://lh6.googleusercontent.com/-Vm1HFUKeA_U/AAAAAAAAAAI/AAAAAAAAAEA/OP6V0S8eRzc/s0-c-k-no-ns/photo.jpg'); background-size: cover; background-position: center;"></div>
-                        <div class="backside" style="background-image: url('https://lh6.googleusercontent.com/-Vm1HFUKeA_U/AAAAAAAAAAI/AAAAAAAAAEA/OP6V0S8eRzc/s0-c-k-no-ns/photo.jpg'); background-size: cover; background-position: center;"></div>
-                    </div>
-                    <div class="tile-wrapper green text-center" data-direction="left">
-                        <div class="frontside">
-                            <img src="http://www.wayoutwest.se/wp-content/themes/wayoutwest/img/gfx_header_logo.png" />
+                    <div class="tile-wrapper flipper">
+                        <div class="frontside red">
+                            <span class="brand">MovingMetro</span>
                         </div>
-                        <div class="backside">
-                            <img src="http://www.wayoutwest.se/wp-content/themes/wayoutwest/img/gfx_header_logo.png" />
+                        <div class="backside white">
+                            <span class="brand">MovingMetro</span>
+                        </div>
+                    </div>
+                    <div class="tile-wrapper flipper green text-center" data-direction="left">
+                        <div class="frontside green">
+                            <span class="brand">MovingMetro</span>
+                        </div>
+                        <div class="backside red">
+                            <span class="brand">MovingMetro</span>
                         </div>
                     </div>
                 </div>

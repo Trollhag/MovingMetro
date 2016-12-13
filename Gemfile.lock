@@ -1,9 +1,5 @@
 GEM
-<<<<<<< HEAD
   remote: https://rubygems.org/
-=======
-  remote: http://rubygems.org/
->>>>>>> e1c175580bcea19ae4552eecf62fd20468086c3d
   specs:
     activesupport (4.2.7)
       i18n (~> 0.7)
@@ -163,14 +159,11 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-<<<<<<< HEAD
   jekyll-feed (~> 0.6)
   minima (~> 2.0)
 
 RUBY VERSION
    ruby 2.3.1p112
-=======
->>>>>>> e1c175580bcea19ae4552eecf62fd20468086c3d
 
 BUNDLED WITH
    1.13.6
