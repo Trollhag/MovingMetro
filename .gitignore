@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 _site
 .sass-cache
 .jekyll-metadata
 =======
 /bootstraps
 >>>>>>> a57f5d229e452e491ebfdcb64f2308d69cf821a1
+=======
+_site/
+>>>>>>> e1c175580bcea19ae4552eecf62fd20468086c3d
